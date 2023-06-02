@@ -13,9 +13,12 @@ class LogisticRegression:
         n_samples, n_fearures = X.shape
         self.weights = np.zeros(n_fearures)
         self.bias = 0
+        
 
         # gradient decent - update the weight parameters
         for _ in range(self.n_iters):
+            linear_model = np.dot(X, self.weights) + self.bias
+            y_predicted = self._sigmoid(linear_model)
             dw = (1/ n_samples) * np.dot(X.T, (y_predicted - y)) # derivative with respect to weights
             db = (1 / n_samples) * np.sum(y_predicted - y) # derivative with respect to biases
 
