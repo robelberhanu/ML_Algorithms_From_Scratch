@@ -14,14 +14,8 @@ class LogisticRegression:
         self.weights = np.zeros(n_fearures)
         self.bias = 0
 
-        # gradient decent
+        # gradient decent - update the weight parameters
         for _ in range(self.n_iters):
-
-            # Define the model
-            linear_model = np.dot(X, self.weights) + self.bias
-            y_predicted = self._sigmoid(linear_model)
-
-            # update the weight parameters
             dw = (1/ n_samples) * np.dot(X.T, (y_predicted - y)) # derivative with respect to weights
             db = (1 / n_samples) * np.sum(y_predicted - y) # derivative with respect to biases
 
@@ -31,9 +25,12 @@ class LogisticRegression:
         
 
     def predict(self, X):
-        pass
+        linear_model = np.dot(X, self.weights) + self.bias
+        y_predicted = self._sigmoid(linear_model)
+        y_predicted_cls = [1 if i > 0.5 else 0 for i in y_predicted] # this classifies the predictions based on their value
+        return y_predicted_cls
+         
 
     # Helper function - sigmoid
-
     def _sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
