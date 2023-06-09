@@ -6,7 +6,8 @@ class KNN:
         self.k = k
 
     def fit(self, X,y):
-        pass
+        self.X_train = X
+        self.y_train = y
 
     def predict(self, X):
-        pass
+        predicted_labels = []
