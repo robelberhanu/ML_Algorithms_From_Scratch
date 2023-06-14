@@ -1,4 +1,5 @@
 
+import numpy as np
 
 class KNN:
 
@@ -10,4 +11,8 @@ class KNN:
         self.y_train = y
 
     def predict(self, X):
-        predicted_labels = []
+        predicted_labels = [self._predict(x) for x in X]
+        return np.array(predicted_labels)
+    
+    def _predict(self, x):
+        pass
