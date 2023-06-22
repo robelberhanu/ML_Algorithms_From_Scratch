@@ -16,7 +16,7 @@ class LinearRegression:
 
         # initialize parameters
         n_samples, n_features = X.shape
-        self.weights = np.zeros(n_features)
+        self.weights = np.zeros(n_features) # Makes a zeros array for initial value of weights.
         self.bias = 0;
 
         for _ in range(self.n_iters):
