@@ -20,4 +20,5 @@ class NaiveBayes:
 
 
     def predict(self, X):
-        pass
+        y_pred = [self._predict(x) for x in X]
+        return y_pred
