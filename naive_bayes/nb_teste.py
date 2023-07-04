@@ -12,6 +12,12 @@ class NaiveBayes:
         self._var = np.zeros((n_classes, n_features), dtype=np.float64)
         self.__priors = np.zeros(n_classes, dtype=np.float64)
 
+        for c in self.__classes:
+            X_c = X[c==y]
+            self._mean[c,:] = X_c.mean(axis=0)
+            self._var[c,:] = X_c.var(axis=0)
+            self.__priors[c] = X_c.shape[0] / float(n_samples)
+
 
     def predict(self, X):
         pass
