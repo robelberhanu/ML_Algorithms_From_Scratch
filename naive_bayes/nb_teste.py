@@ -22,3 +22,20 @@ class NaiveBayes:
     def predict(self, X):
         y_pred = [self._predict(x) for x in X]
         return y_pred
+    
+    def _predict(self, x):
+        posteriors = []
+
+        for idx, c in enumerate(self.__classes):
+            prior = np.log(self.__priors[idx])
+            class_conditional = 
+
+    #helper function to calculate probability density function.
+    def _pdf(self, class_idx, x):
+        mean = self._mean[class_idx]
+        var = self._var[class_idx]
+        numerator = np.exp(- (x-mean)**2/(2*var))
+        denominator = np.sqrt(2* np.pi * var)
+        return numerator/denominator
+
+
