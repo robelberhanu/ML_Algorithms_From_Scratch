@@ -18,3 +18,7 @@ class SVM:
         self.w = np.zeros(n_features)
         self.b = 0
 
+
+    def predict(self, X):
+        linear_output = np.dot(X, self.w) - self.b
+        return np.sign(linear_output)
