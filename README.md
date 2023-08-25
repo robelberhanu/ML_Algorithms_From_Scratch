@@ -44,7 +44,7 @@ pip install -r requirements.txt
 You can run the files as following.
 
 ```sh
-python -m mlfromscratch.<algorithm-file>
+python -m ML_Algorithms_From_Scratch.<algorithm-file>
 ```
 
 with `<algorithm-file>` being the valid filename of the algorithm without the extension.
