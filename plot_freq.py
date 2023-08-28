@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # File name
-filename = "frequency_graph.txt"
+filename = "legacy_amplitude.txt"
 
 # Lists to store values
 freqs = []
