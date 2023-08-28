@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # File name
-filename = "your_file.txt"
+filename = "reprocessed_amplitude.txt"
 
 # Lists to store values
 freqs = []
@@ -25,7 +25,7 @@ with open(filename, 'r') as file:
 
 # Plotting
 plt.figure(figsize=(10, 6))
-plt.plot(freqs, amplitudes, '-o', markersize=4)
+plt.plot(freqs, amplitudes, '-o', markersize=4, color='navy')  # using navy blue for the line and markers
 
 # Setting label sizes and boldness
 plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold')
@@ -36,6 +36,6 @@ plt.title("Frequency vs Amplitude", fontsize=16, fontweight='bold')
 plt.xticks(fontsize=12, fontweight='bold')
 plt.yticks(fontsize=12, fontweight='bold')
 
-plt.grid(True)
+plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 plt.tight_layout()
 plt.show()
