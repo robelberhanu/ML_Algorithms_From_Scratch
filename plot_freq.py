@@ -28,7 +28,7 @@ plt.plot(freqs, amplitudes, '-o', markersize=4)
 # Setting label sizes and boldness
 plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold')
 plt.ylabel("Amplitude", fontsize=14, fontweight='bold')
-plt.title("Frequency vs Amplitude", fontsize=16, fontweight='bold')
+plt.title("Frequency vs Amplitude (Legacy Data)", fontsize=16, fontweight='bold')
 
 # Increasing tick size for readability
 plt.xticks(fontsize=12, fontweight='bold')
