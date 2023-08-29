@@ -24,9 +24,9 @@ with open(filename, 'r') as file:
         amplitudes.append(float(amp))
 
 # Define the sample rate and the frequency to be notched out
-fs = 20.0  # Sample rate. This should be adjusted based on your data.
+fs = 2.0  # Sample rate. This should be adjusted based on your data.
 f0 = 0.5  # Frequency to be removed. Adjust based on your specific requirements.
-Q = 30.0  # Quality factor. Higher values mean narrower notch.
+Q = 100.0  # Quality factor. Higher values mean narrower notch.
 
 # Design the notch filter
 b, a = iirnotch(f0, Q, fs)
