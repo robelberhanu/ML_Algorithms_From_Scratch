@@ -24,17 +24,17 @@ with open(filename, 'r') as file:
             amplitudes.append(float(amp))
 
 # Plotting
-plt.figure(figsize=(10, 6), dpi=100)  # Specify the DPI here
+plt.figure(figsize=(12, 8))  # Specify the DPI here
 plt.plot(freqs, amplitudes, '-o', markersize=4, color='navy')  # using navy blue for the line and markers
 
 # Setting label sizes and boldness
-plt.xlabel("Frequency (Hz)", fontsize=22, fontweight='bold')
-plt.ylabel("Amplitude", fontsize=22, fontweight='bold')
-plt.title("Frequency vs Amplitude", fontsize=23, fontweight='bold')
+plt.xlabel("Frequency (Hz)", fontsize=23, fontweight='bold')
+plt.ylabel("Amplitude (m)", fontsize=23, fontweight='bold')
+plt.title("Frequency vs Amplitude", fontsize=24, fontweight='bold')
 
 # Increasing tick size for readability
-plt.xticks(fontsize=20, fontweight='bold')
-plt.yticks(fontsize=20, fontweight='bold')
+plt.xticks(fontsize=21, fontweight='bold')
+plt.yticks(fontsize=21, fontweight='bold')
 
 plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 plt.tight_layout()
