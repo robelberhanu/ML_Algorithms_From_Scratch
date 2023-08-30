@@ -24,7 +24,7 @@ with open(filename, 'r') as file:
             amplitudes.append(float(amp))
 
 # Plotting
-plt.figure(figsize=(10, 6), dpi=300)  # Specify the DPI here
+plt.figure(figsize=(10, 6), dpi=100)  # Specify the DPI here
 plt.plot(freqs, amplitudes, '-o', markersize=4, color='navy')  # using navy blue for the line and markers
 
 # Setting label sizes and boldness
@@ -40,6 +40,6 @@ plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 plt.tight_layout()
 
 # Save the figure in SVG format
-plt.savefig("output_plot.svg", format='svg')
+plt.savefig("shot_frequency.svg", format='svg')
 
 plt.show()
