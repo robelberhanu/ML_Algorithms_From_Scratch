@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # File name
-filename = ""
+filename = "frequency_graph.txt"
 
 # Lists to store values
 freqs = []
