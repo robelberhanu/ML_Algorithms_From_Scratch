@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
-from scipy.signal import iirnotch, lfilter
 
 # File name
 filename = "frequency_graph.txt"
@@ -17,36 +15,36 @@ with open(filename, 'r') as file:
     # Read each line
     for line in file:
         # Split values at whitespace
-        freq, amp = line.split()
-        
-        # Convert strings to float and append to lists
-        freqs.append(float(freq))
-        amplitudes.append(float(amp))
-
-# Define the sample rate and the frequency to be notched out
-fs = 2.0  # Sample rate. This should be adjusted based on your data.
-f0 = 0.5  # Frequency to be removed. Adjust based on your specific requirements.
-Q = 100.0  # Quality factor. Higher values mean narrower notch.
-
-# Design the notch filter
-b, a = iirnotch(f0, Q, fs)
-
-# Apply the filter
-filtered_amplitudes = lfilter(b, a, amplitudes)
+        values = line.split()
+        if len(values) == 2:
+            freq, amp = values
+            
+            # Convert strings to float
+            freq = float(freq)
+            amp = float(amp)
+            
+            # Only append values if amplitude is less than or equal to 0.8
+            if amp <= 0.9:
+                freqs.append(freq)
+                amplitudes.append(amp)
 
 # Plotting
-plt.figure(figsize=(10, 6))
-plt.plot(freqs, filtered_amplitudes, '-o', markersize=4)
+plt.figure(figsize=(12, 8))  # Specify the DPI here
+plt.plot(freqs, amplitudes, '-', markersize=4, color='navy')  # using navy blue for the line and markers
 
-# Setting label sizes and boldness
-plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold')
-plt.ylabel("Amplitude", fontsize=14, fontweight='bold')
-plt.title("Frequency vs Amplitude (Filtered)", fontsize=16, fontweight='bold')
+# Setting label sizes and boldness, and adding units to amplitude
+plt.xlabel("Frequency (Hz)", fontsize=25, fontweight='bold')
+plt.ylabel("Amplitude (m)", fontsize=25, fontweight='bold')  # Amplitude units added here
+plt.title("Frequency vs Amplitude", fontsize=26, fontweight='bold')
 
-# Increasing tick size for readability
-plt.xticks(fontsize=12, fontweight='bold')
-plt.yticks(fontsize=12, fontweight='bold')
+# Adjusting tick size for readability and setting font size to 14
+plt.xticks(fontsize=24, fontweight='bold')
+plt.yticks(fontsize=24, fontweight='bold')
 
-plt.grid(True)
+plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 plt.tight_layout()
+
+# Save the figure in SVG format
+plt.savefig("filtered_freq_plot.svg", format='svg')
+
 plt.show()
