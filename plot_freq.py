@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # File name
-filename = "frequency_graph.txt"
+filename = "frequency_data/reprocessed_sill_frequency.txt"
 
 # Lists to store values
 freqs = []
@@ -40,6 +40,6 @@ plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 plt.tight_layout()
 
 # Save the figure in SVG format
-plt.savefig("shot_frequency.svg", format='svg')
+plt.savefig("reprocessed_sill_frequency.svg", format='svg')
 
 plt.show()
