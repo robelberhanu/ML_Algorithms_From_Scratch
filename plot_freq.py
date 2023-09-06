@@ -39,7 +39,7 @@ freqs1, amplitudes1 = extract_data(filename1)
 freqs2, amplitudes2 = extract_data(filename2)
 
 # Plotting
-plt.figure(figsize=(10, 6), dpi=300)  # Specify the DPI here
+fig = plt.figure(figsize=(12, 7), dpi=300)  # Using fig for more explicit control
 
 # Plot data from the first file
 plt.plot(freqs1, amplitudes1, '-o', markersize=4, color='navy', label='Source 1')
@@ -48,21 +48,22 @@ plt.plot(freqs1, amplitudes1, '-o', markersize=4, color='navy', label='Source 1'
 plt.plot(freqs2, amplitudes2, '-o', markersize=4, color='green', label='Source 2')
 
 # Setting label sizes, boldness, and adding units to amplitude
-plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold')
-plt.ylabel("Amplitude (m)", fontsize=14, fontweight='bold')
+plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold', labelpad=15)  
+plt.ylabel("Amplitude (m)", fontsize=14, fontweight='bold', labelpad=15)
 plt.title("Frequency vs Amplitude", fontsize=16, fontweight='bold')
 
 # Adjusting tick size for readability and setting font size to 14
-plt.xticks(fontsize=14, fontweight='bold')
+plt.xticks(fontsize=14, fontweight='bold', rotation=45)  # Rotate x-axis labels
 plt.yticks(fontsize=14, fontweight='bold')
 
 plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
-plt.tight_layout()
 
 # Add legend to differentiate between the two datasets
-plt.legend(fontsize=12)
+plt.legend(fontsize=12, loc='upper right')
 
-# Save the figure in SVG format
+# Adjust bottom margin
+fig.subplots_adjust(bottom=0.2)  # Adjust the value if needed
+
+plt.tight_layout()  # Ensure it's placed just before plt.show() or plt.savefig()
 plt.savefig("output_plot.svg", format='svg')
-
 plt.show()
