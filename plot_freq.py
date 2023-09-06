@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
+from scipy.interpolate import UnivariateSpline
+import numpy as np
 
 # Set the global font to be Times New Roman
 plt.rcParams["font.family"] = "Times New Roman"
 
 # File names
-filename1 = "your_file1.txt"
-filename2 = "your_file2.txt"
+filename1 = "stack_frequency_data/legacy_end_frequency.txt"
+filename2 = "stack_frequency_data/reprocessed_end_frequency.txt"
 
 # Function to extract data from file
 def extract_data(filename):
@@ -38,14 +40,19 @@ def extract_data(filename):
 freqs1, amplitudes1 = extract_data(filename1)
 freqs2, amplitudes2 = extract_data(filename2)
 
+# Use UnivariateSpline to smoothen data from the second source
+spline = UnivariateSpline(freqs2, amplitudes2, s= 0.2)
+freqs2_smooth = np.linspace(min(freqs2), max(freqs2), 700)
+amplitudes2_smooth = spline(freqs2_smooth)
+
 # Plotting
-fig = plt.figure(figsize=(12, 7), dpi=300)  # Using fig for more explicit control
+fig = plt.figure(figsize=(12, 7), dpi=300)
 
 # Plot data from the first file
-plt.plot(freqs1, amplitudes1, '-o', markersize=4, color='navy', label='Source 1')
+plt.plot(freqs1, amplitudes1, '-', markersize=4, color='navy', label='Legacy')
 
-# Plot data from the second file
-plt.plot(freqs2, amplitudes2, '-o', markersize=4, color='green', label='Source 2')
+# Plot smooth data from the second file
+plt.plot(freqs2_smooth, amplitudes2_smooth, '-', color='green', label='Reprocessed')
 
 # Setting label sizes, boldness, and adding units to amplitude
 plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold', labelpad=15)  
@@ -59,11 +66,9 @@ plt.yticks(fontsize=14, fontweight='bold')
 plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 
 # Add legend to differentiate between the two datasets
-plt.legend(fontsize=12, loc='upper right')
+plt.legend(fontsize=12, loc='upper left', bbox_to_anchor=(1, 1))
 
-# Adjust bottom margin
-fig.subplots_adjust(bottom=0.2)  # Adjust the value if needed
 
-plt.tight_layout()  # Ensure it's placed just before plt.show() or plt.savefig()
+plt.legend(fontsize=12, loc='upper left', bbox_to_anchor=(1, 1))
 plt.savefig("output_plot.svg", format='svg')
 plt.show()
