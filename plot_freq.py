@@ -6,8 +6,8 @@ import numpy as np
 plt.rcParams["font.family"] = "Times New Roman"
 
 # File names
-filename1 = "stack_frequency_data/legacy_end_frequency.txt"
-filename2 = "stack_frequency_data/reprocessed_end_frequency.txt"
+filename1 = "more_stacks/legacy_extremeleft_of_basement.txt"
+filename2 = "more_stacks/reprocessed_baseofecca.txt"
 
 # Function to extract data from file
 def extract_data(filename):
@@ -42,7 +42,7 @@ freqs2, amplitudes2 = extract_data(filename2)
 
 # Use UnivariateSpline to smoothen data from the second source
 spline = UnivariateSpline(freqs2, amplitudes2, s= 0.2)
-freqs2_smooth = np.linspace(min(freqs2), max(freqs2), 700)
+freqs2_smooth = np.linspace(min(freqs2), max(freqs2), 1000)
 amplitudes2_smooth = spline(freqs2_smooth)
 
 # Plotting
@@ -55,13 +55,13 @@ plt.plot(freqs1, amplitudes1, '-', markersize=4, color='navy', label='Legacy')
 plt.plot(freqs2_smooth, amplitudes2_smooth, '-', color='green', label='Reprocessed')
 
 # Setting label sizes, boldness, and adding units to amplitude
-plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold', labelpad=15)  
-plt.ylabel("Amplitude (m)", fontsize=14, fontweight='bold', labelpad=15)
+plt.xlabel("Frequency (Hz)", fontsize=9, fontweight='bold', labelpad=15)  
+plt.ylabel("Amplitude (m)", fontsize=9, fontweight='bold', labelpad=15)
 plt.title("Frequency vs Amplitude", fontsize=16, fontweight='bold')
 
 # Adjusting tick size for readability and setting font size to 14
-plt.xticks(fontsize=14, fontweight='bold', rotation=45)  # Rotate x-axis labels
-plt.yticks(fontsize=14, fontweight='bold')
+plt.xticks(fontsize=12, fontweight='bold', rotation=45)  # Rotate x-axis labels
+plt.yticks(fontsize=12, fontweight='bold')
 
 plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 
