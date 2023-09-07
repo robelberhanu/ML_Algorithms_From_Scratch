@@ -6,8 +6,8 @@ import numpy as np
 plt.rcParams["font.family"] = "Times New Roman"
 
 # File names
-filename1 = "more_stacks/legacy_extremeleft_of_basement.txt"
-filename2 = "more_stacks/reprocessed_baseofecca.txt"
+filename1 = "more_stacks/legacy_top_of_sill.txt"
+filename2 = "more_stacks/reprocessed_top_of_sill.txt"
 
 # Function to extract data from file
 def extract_data(filename):
@@ -55,13 +55,13 @@ plt.plot(freqs1, amplitudes1, '-', markersize=4, color='navy', label='Legacy')
 plt.plot(freqs2_smooth, amplitudes2_smooth, '-', color='green', label='Reprocessed')
 
 # Setting label sizes, boldness, and adding units to amplitude
-plt.xlabel("Frequency (Hz)", fontsize=9, fontweight='bold', labelpad=15)  
-plt.ylabel("Amplitude (m)", fontsize=9, fontweight='bold', labelpad=15)
+plt.xlabel("Frequency (Hz)", fontsize=14, fontweight='bold', labelpad=15)  
+plt.ylabel("Amplitude (m)", fontsize=14, fontweight='bold', labelpad=15)
 plt.title("Frequency vs Amplitude", fontsize=16, fontweight='bold')
 
 # Adjusting tick size for readability and setting font size to 14
-plt.xticks(fontsize=12, fontweight='bold', rotation=45)  # Rotate x-axis labels
-plt.yticks(fontsize=12, fontweight='bold')
+plt.xticks(fontsize=14, fontweight='bold', rotation=45)  # Rotate x-axis labels
+plt.yticks(fontsize=14, fontweight='bold')
 
 plt.grid(True, which='both', linestyle='--', linewidth=0.5, color='gray')
 
