@@ -6,8 +6,8 @@ import numpy as np
 plt.rcParams["font.family"] = "Times New Roman"
 
 # File names
-filename1 = "more_stacks/legacy_top_of_sill.txt"
-filename2 = "more_stacks/reprocessed_top_of_sill.txt"
+filename1 = "stack_frequency_data/legacy_end_frequency.txt"
+filename2 = "stack_frequency_data/reprocessed_end_frequency.txt"
 
 # Function to extract data from file
 def extract_data(filename):
